@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'maven'
+
+def libVersionCode = 1
+def libVersionName = "1.0"
+def libName = "HoleHint"
+def libGroupId = "com.kritsin.holehint"
+
+uploadArchives {
+    repositories.mavenDeployer {
+        pom.version = libVersionName
+        pom.artifactId = libName
+        pom.groupId = libGroupId
+        repository(url: "file:///d://G//HoleHint")
+    }
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 29
+        versionCode libVersionCode
+        versionName libVersionName
+        project.archivesBaseName = libName
+        project.version = android.defaultConfig.versionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    defaultPublishConfig "release"
+    flavorDimensions "default"
+}
+
+ext {
+    appcompatVersion = '1.1.0'
+    constraintLayoutVersion = "2.0.0-beta4"
+}
+
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+//    implementation 'androidx.lifecycle:lifecycle-*:2.2.0-alpha03'
+//    https://developer.android.com/jetpack/androidx/releases/lifecycle
+}
+

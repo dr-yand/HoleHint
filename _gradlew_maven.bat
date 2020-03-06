@@ -1,0 +1,2 @@
+start gradlew clean build assembleRelease uploadArchives exportJar
+exit
