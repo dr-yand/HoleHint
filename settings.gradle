@@ -1,0 +1,5 @@
+rootProject.name='HoleHintExample'
+include ':app'
+include ":holehint"
+project(":holehint").projectDir = new File("d:/AndroidTemp/HoleHint/app")
+
